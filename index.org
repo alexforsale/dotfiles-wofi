@@ -44,7 +44,7 @@
 #+end_src
 ** style
 :PROPERTIES:
-:header-args: :tangle .config/wofi/config :mkdirp t
+:header-args: :tangle .config/wofi/style.css :mkdirp t
 :END:
 #+begin_src css
   @define-color color0  #073642;
