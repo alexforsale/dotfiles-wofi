@@ -1,0 +1,152 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:{} arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:nil
+#+options: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+options: timestamp:t title:t toc:t todo:t |:t
+#+title: Wofi Configuration
+#+date: <2025-09-17 Wed>
+#+author: Kristian Alexander P
+#+email: alexforsale@yahoo.com
+#+language: en
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 30.2 (Org mode 9.7.11)
+#+cite_export:
+#+HTML_HEAD: <style> #content{max-width:1800px;}</style>
+#+HTML_HEAD: <style> p{max-width:800px;}</style>
+#+HTML_HEAD: <style> li{max-width:800px;}</style>
+* Wofi
+** config
+:PROPERTIES:
+:header-args: :tangle .config/wofi/config :mkdirp t
+:END:
+#+begin_src conf
+  insensitive = true
+  term=alacritty
+  key_up=Up,Ctrl-p,Ctrl-k
+  key_down=Down,Ctrl-n,Ctrl-j
+  key_left=Left,Ctrl-b
+  key_right=Right,Ctrl-f
+  key_pgup=Page_Up,Alt-v
+  key_pgdn=Page_Down,Ctrl-f
+  key_exit=Escape,Ctrl-g,Ctrl-bracketleft
+  matching=fuzzy
+  allow_image=true
+  allow_markup=true
+  gtk_dark=true
+  dynamic_lines=false
+  close_on_focus_loss=true
+  single_click=true
+  height=30%
+  width=30%
+  columns=1
+  prompt=PROMPT
+#+end_src
+** style
+:PROPERTIES:
+:header-args: :tangle .config/wofi/config :mkdirp t
+:END:
+#+begin_src css
+  @define-color color0  #073642;
+  @define-color color1  #dc322f;
+  @define-color color2  #859900;
+  @define-color color3  #b58900;
+  @define-color color4  #268bd2;
+  @define-color color5  #d33682;
+  @define-color color6  #2aa198;
+  @define-color color7  #eee8d5;
+  @define-color color8  #6c7c80;
+  @define-color color9  #dc322f;
+  @define-color color10  #859900;
+  @define-color color11  #b58900;
+  @define-color color12  #268bd2;
+  @define-color color13  #d33682;
+  @define-color color14  #2aa198;
+  @define-color color15  #eee8d5;
+  @define-color color16 #3b4252;
+  @define-color color17 #2e3440;
+  @define-color color18 #434c5e;
+  @define-color color19 #4c566a;
+  @define-color color20 #434c5e;
+  @define-color color21 #d8dee9;
+  @define-color color22 #e5e9f0;
+  @define-color color23 #eceff4;
+  @define-color color24 #8fbcbb;
+  @define-color color25 #88c0d0;
+  @define-color color26 #81a1c1;
+  @define-color color27 #5e81ac;
+  @define-color color28 #bf616a;
+  @define-color color29 #d08770;
+  @define-color color30 #ebcb8b;
+  @define-color color31 #a3be8c;
+  @define-color color32 #b48ead;
+
+  window {
+      margin: 0px;
+      /* border: 1px solid #928374; */
+      border: 1px solid @color18;
+      background-color: @color17;
+  }
+
+  #input {
+      margin: 5px;
+      border: none;
+      color: @color23;
+      background-color: @color16;
+  }
+
+  #inner-box {
+      margin: 5px;
+      border: none;
+      background-color: @color16;
+  }
+
+  #outer-box {
+      margin: 5px;
+      border: none;
+      background-color: @color16;
+  }
+
+  #scroll {
+      margin: 0px;
+      border: none;
+  }
+
+  #text {
+      margin: 5px;
+      border: none;
+      color: @color23;
+  }
+
+  #entry:selected {
+      background-color: @color29;
+  }
+#+end_src
+* wofi-power-menu
+:PROPERTIES:
+:header-args: :tangle .config/wofi-power-menu.toml :mkdirp t
+:END:
+#+begin_src toml
+  [wofi]
+    extra_args = "--allow-markup --columns=1 --hide-scroll -W 15% --location=top_right --hide-search -x -30"
+
+  [menu.shutdown]
+    cmd = "systemctl poweroff"
+
+  [menu.reboot]
+    cmd = "systemctl reboot"
+
+  [menu.suspend]
+    enabled = "false"
+
+  [menu.hibernate]
+    enabled = "false"
+    cmd = "systemctl hybernate"
+
+  [menu.logout]
+    cmd = "hyprctl dispatch exit"
+
+  [menu.lock-screen]
+    cmd = "hyprlock"
+    requires_confirmation = "false"
+#+end_src
